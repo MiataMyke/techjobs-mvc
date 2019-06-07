@@ -27,5 +27,18 @@
         </div>
     </div>
 
+<div th:fragment="search-results">
+    <div th:if="${jobs} and ${jobs.size()}">
+        <p th:text="${jobs.size()} + ' results'"></p>
+        <table th:each="job : ${jobs}" th:class="job-listing">
+            <th th:text="${job.get('name')}">test</th>
+            <tr th:each="field : ${job.entrySet()}">
+                    <td th:text="${#strings.capitalizeWords(field.getKey())}"></td>
+                    <td th:text="${field.getValue()}"></td>
+            </tr>
+        </table>
+    </div>
+</div>
+
 </body>
 </html>
